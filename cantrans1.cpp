@@ -49,9 +49,13 @@ int main(int argc, char **argv)
     */
     rfilter[0].can_id =0x03;                        //ID
     rfilter[0].can_mask = CAN_SFF_MASK;
-    setsockopt(s, SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter, sizeof(rfilter)); //设置过滤规则
+
+    //setsockopt(s, SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter, sizeof(rfilter)); //设置过滤规则
+    setsockopt(s, SOL_CAN_RAW, CAN_RAW_FILTER, NULL, 0);
+    frame.can_id = 0x11;
+    frame.can_dlc = 8;
     int flag=0;
-        for(int i=0;i<8;i++)
+        for(int i=0;i<7;i++)
         {
             frame.data[i]=1;
         };

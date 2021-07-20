@@ -58,7 +58,7 @@ int main(int argc, char **argv)
     addr.can_ifindex = ifr.ifr_ifindex;
     bind(s, (struct sockaddr *)&addr, sizeof(addr)); //将套接字与 vcan0 绑定
 
-    rfilter[0].can_id =0x18C4D1D0;                        //ID shezhi
+    rfilter[0].can_id =0x02;                        //ID shezhi
     rfilter[0].can_mask = CAN_SFF_MASK;
 
     setsockopt(s, SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter, sizeof(rfilter)); //设置过滤规则
